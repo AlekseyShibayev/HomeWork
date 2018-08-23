@@ -16,10 +16,11 @@ public class PathUtils {
         }
         map[0][0] = '@';
         map[size - 1][size - 1] = 'X';
-        int wallFactor = wallCoefficient  * (size * size) / 100;
+        long quantityPoints = size * size;
+        long wallFactor = wallCoefficient  * quantityPoints/ 100;
         long wallsCount = 0;
         if (wallFactor > 0) {
-            for (int i = 0; i < wallFactor; i++) {
+            for (long i = 0; i < wallFactor; i++) {
                 int wallX = RND.nextInt(size);
                 int wallY = RND.nextInt(size);
                 if (map[wallX][wallY] == '.') {
@@ -28,7 +29,7 @@ public class PathUtils {
                 }
             }
         }
-        System.out.println("map rdy. " + wallsCount*100/(size*size) + " % of walls");
+        System.out.println("map rdy. " + wallsCount*100/quantityPoints + " % of walls");
         return map;
     }
 
@@ -53,5 +54,6 @@ public class PathUtils {
         }
         System.out.println(" ");
     }
+
 }
 

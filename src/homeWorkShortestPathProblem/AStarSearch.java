@@ -8,6 +8,7 @@ public class AStarSearch implements Navigator {
 
     @Override
     public char[][] searchRoute(char[][] map) {
+        if (map == null) {return null;}
         int[] mapSize = getMapSize(map);
         int[] start = getStartCoordinates(map);
         int[] finish = getFinishCoordinates(map);
@@ -80,6 +81,9 @@ public class AStarSearch implements Navigator {
     }
 
     private int[][] doAstarSearch(char[][] map, int[] start, int[] finish, int[] mapSize) {
+        if (map == null || start == null || finish == null || mapSize == null) {
+            return  null;
+        }
         int rows = mapSize[0];
         int columns = mapSize[1];
         Comparator<int[]> comp = new AStarSearchComparator();
@@ -150,7 +154,7 @@ public class AStarSearch implements Navigator {
     }
 
     private char[][] createShortestPathAs(char[][] map, int[][] ways, int[] finish, int[] start) {
-        if (ways == null) {
+        if (ways == null || map == null || finish == null || start == null) {
             return null;
         }
         int rows = map.length;

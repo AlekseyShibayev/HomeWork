@@ -7,6 +7,7 @@ public class BFS implements Navigator {
 
     @Override
     public char[][] searchRoute (char[][] map) {
+        if (map == null) {return null;}
         int[] mapSize = getMapSize(map);
         int[] start = getStartCoordinates(map);
         int[] finish = getFinishCoordinates(map);
@@ -64,6 +65,7 @@ public class BFS implements Navigator {
     }
 
     private int[][] doBFS (int[][] ways, int[] start, int[] finish, int[] mapSize) {
+        if (ways == null || start == null || finish == null || mapSize == null) {return null;}
         int rows = mapSize[0];
         int columns = mapSize[1];
         ways[start[0]][start[1]] = 2;
@@ -125,7 +127,7 @@ public class BFS implements Navigator {
     }
 
     private char[][] createShortestPath(char[][] map, int[][] ways, int[] finish) {
-        if (ways == null) {
+        if (ways == null || map == null || finish == null) {
             return null;
         }
         int rows = map.length;
